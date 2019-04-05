@@ -1,0 +1,30 @@
+server:
+  port: 9005
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9001/eureka/
+    registry-fetch-interval-seconds: 5
+  instance:
+    prefer-ip-address: true
+    health-check-url-path: /actuator/health
+    metadata-map:
+      startup: ${random.int}
+spring:
+  application:
+    name: service-consumer
+  profiles:
+    active: dev
+  cloud:
+    config:
+      fail-fast: true #连不上就抛出异常
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: springcloud-config
+  main:
+    allow-bean-definition-overriding: true #设置是否允许通过注册与现有定义同名的定义来重写be an定义。
+feign:
+  hystrix:
+    enabled: true

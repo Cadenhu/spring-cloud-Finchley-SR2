@@ -1,0 +1,24 @@
+server:
+  port: 9001
+eureka:
+  instance:
+    hostname: springcloud-eurka
+    prefer-ip-address: true #注册到Eureka Server上的是IP
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    register-with-eureka: false
+    fetch-registry: false
+#公开所有的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+spring:
+  boot:
+    admin:
+      client:
+        url: #admin 服务
+#  zipkin:
+#    base-url: #aipkin 服务

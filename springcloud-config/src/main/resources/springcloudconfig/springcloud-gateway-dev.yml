@@ -1,0 +1,11 @@
+spring:
+  zipkin:
+    base-url: http://127.0.0.1:9004
+#  boot:
+#    admin:
+#      client:
+#        url: http://127.0.0.1:9008
+test:
+  mq: test88888884444
+server:
+  port: 9003

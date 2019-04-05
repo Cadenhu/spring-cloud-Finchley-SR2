@@ -1,0 +1,21 @@
+server:
+  port: 9008
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9001/eureka/
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: springcloud-monitor
+  profiles:
+    active: dev
+  cloud:
+    config:
+      fail-fast: true #连不上就抛出异常
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: springcloud-config

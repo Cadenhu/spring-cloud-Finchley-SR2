@@ -1,0 +1,44 @@
+eureka:
+  client:
+    registry-fetch-interval-seconds: 5
+    service-url:
+      defaultZone: http://127.0.0.1:9001/eureka/
+  instance:
+    prefer-ip-address: true
+    health-check-url-path: /actuator/health
+    metadata-map:
+      startup: ${random.int}
+
+spring:
+  application:
+    name: springcloud-gateway
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    config:
+      fail-fast: true #连不上就抛出异常
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: springcloud-config
+    gateway:
+      discovery:
+        locator:
+          enabled: true #启动gateway 跟eureka配合，使用服务名即可访问服务
+  rabbitmq:
+    username: guest
+    password: guest
+    host: 127.0.0.1
+    port: 5672
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+#  security:
+#    enabled: false
+
