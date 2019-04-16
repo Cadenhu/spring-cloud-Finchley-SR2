@@ -24,7 +24,7 @@ public class SecurityUserDetailsServiceImpl implements UserDetailsService {
         String lowcaseUsername = username.toLowerCase();
         Collection<GrantedAuthority> grantedAuthorities = new HashSet<>();
         grantedAuthorities.add(new SimpleGrantedAuthority("findclient"));
-        UserInfo user = new UserInfo(1, "system", "{bcrypt}$2a$10$82YfBgDZocDC1kqbXhdBwuPPIKKMNcFxcndJ7dwdfTgg9vdVrT/cK", grantedAuthorities, true);
+        UserInfo user = new UserInfo(1, "system", "{bcrypt}$2a$10$prv7Xhe5PuXiK4SJLjbstuZauW7/jwl9UnUvuEBGEoiEjnW41vA4u", grantedAuthorities, true);
         return user;
     }
 }

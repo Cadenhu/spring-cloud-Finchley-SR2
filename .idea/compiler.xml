@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springcloud-bus" />
+        <module name="springcloud-config" />
+        <module name="springcloud-consumer" />
+        <module name="springcloud-elk" />
+        <module name="springcloud-eureka" />
+        <module name="springcloud-gateway" />
+        <module name="springcloud-provider" />
+        <module name="springcloud-security" />
+        <module name="springcloud-servermonitor" />
+        <module name="springcloud-zipkin" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="springcloud" target="1.8" />
+      <module name="springcloud-bus" target="1.8" />
+      <module name="springcloud-config" target="1.8" />
+      <module name="springcloud-consumer" target="1.8" />
+      <module name="springcloud-elk" target="1.8" />
+      <module name="springcloud-eureka" target="1.8" />
+      <module name="springcloud-gateway" target="1.8" />
+      <module name="springcloud-provider" target="1.8" />
+      <module name="springcloud-security" target="1.8" />
+      <module name="springcloud-servermonitor" target="1.8" />
+      <module name="springcloud-zipkin" target="1.8" />
+      <module name="springcloud-zuul" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="springcloud" options="" />
+      <module name="springcloud-config" options="" />
+      <module name="springcloud-consumer" options="" />
+      <module name="springcloud-elk" options="-parameters" />
+      <module name="springcloud-eureka" options="" />
+      <module name="springcloud-gateway" options="" />
+      <module name="springcloud-security" options="" />
+      <module name="springcloud-zipkin" options="" />
+      <module name="springcloud-zuul" options="" />
+    </option>
+  </component>
+</project>

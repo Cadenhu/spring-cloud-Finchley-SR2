@@ -10,6 +10,7 @@ eureka:
     health-check-url-path: /actuator/health
     metadata-map:
       startup: ${random.int}
+    #ip-address: ${spring.cloud.client.ip-address}:${server.port}
 spring:
   application:
     name: springcloud-config

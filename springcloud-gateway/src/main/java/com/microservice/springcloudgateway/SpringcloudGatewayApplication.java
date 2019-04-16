@@ -21,11 +21,4 @@ public class SpringcloudGatewayApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringcloudGatewayApplication.class, args);
 	}
-
-	@Value("${test.mq}")
-	private String testValue="";
-	@GetMapping("/get")
-	String testBus(){
-		return testValue;
-	}
 }

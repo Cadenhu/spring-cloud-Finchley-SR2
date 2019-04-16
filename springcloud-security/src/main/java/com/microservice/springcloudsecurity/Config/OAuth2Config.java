@@ -47,8 +47,8 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
         return new SecurityClientDetailsServiceImpl();
     }
 
-    //<editor-fold desc="Description">
-  /*  @Bean
+    //<editor-fold desc="自定义jwt信息">
+    @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter() {
             @Override
@@ -65,35 +65,29 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
                 .getKeyPair("kevin_key");
         converter.setKeyPair(keyPair);
         return converter;
-    }*/
+    }
 //</editor-fold>
 
-    @Bean
-    public JwtAccessTokenConverter accessTokenConverter() {
-        final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        return converter;
-    }
+//    @Bean
+//    public JwtAccessTokenConverter accessTokenConverter() {
+//        final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+//        return converter;
+//    }
 
-    public OAuth2Config(
-            AuthenticationConfiguration authenticationConfiguration
-    ) throws Exception {
+    public OAuth2Config(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         this.authenticationManager =
                 authenticationConfiguration.getAuthenticationManager();
     }
 
     //实现客户端自定义配置
     @Override
-    public void configure(
-            ClientDetailsServiceConfigurer clients
-    ) throws Exception {
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.withClientDetails(clientDetailsService());
     }
 
     //令牌端点的存储方式
     @Override
-    public void configure(
-            AuthorizationServerEndpointsConfigurer endpoints
-    ) throws Exception {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService())

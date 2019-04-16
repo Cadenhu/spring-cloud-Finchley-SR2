@@ -40,7 +40,7 @@ public class SecurityClientDetailsServiceImpl implements ClientDetailsService {
         scopes.add("all");
         baseClientDetails.setScope(scopes);
         baseClientDetails.setClientId("client");
-        baseClientDetails.setClientSecret("{bcrypt}$2a$10$Zudy9yrwEEmlFpCK6alys.1ha/fiQic30T.dpgIY/E8AxN2hZbiPe");
+        baseClientDetails.setClientSecret("{bcrypt}$2a$10$ylUxU3fBEKKyBnlwm3.hm.xGEyjQbLJhY.GvUxrB54B9/eU7XLBsG");
         //baseClientDetails.addAdditionalInformation();
         return baseClientDetails;
     }

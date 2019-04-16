@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/springcloud.iml" filepath="$PROJECT_DIR$/springcloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-bus/springcloud-bus.iml" filepath="$PROJECT_DIR$/springcloud-bus/springcloud-bus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-config/springcloud-config.iml" filepath="$PROJECT_DIR$/springcloud-config/springcloud-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-consumer/springcloud-consumer.iml" filepath="$PROJECT_DIR$/springcloud-consumer/springcloud-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-elk/springcloud-elk.iml" filepath="$PROJECT_DIR$/springcloud-elk/springcloud-elk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-eureka/springcloud-eureka.iml" filepath="$PROJECT_DIR$/springcloud-eureka/springcloud-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-gateway/springcloud-gateway.iml" filepath="$PROJECT_DIR$/springcloud-gateway/springcloud-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-provider/springcloud-provider.iml" filepath="$PROJECT_DIR$/springcloud-provider/springcloud-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-security/springcloud-security.iml" filepath="$PROJECT_DIR$/springcloud-security/springcloud-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-servermonitor/springcloud-servermonitor.iml" filepath="$PROJECT_DIR$/springcloud-servermonitor/springcloud-servermonitor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-zipkin/springcloud-zipkin.iml" filepath="$PROJECT_DIR$/springcloud-zipkin/springcloud-zipkin.iml" />
+    </modules>
+  </component>
+</project>

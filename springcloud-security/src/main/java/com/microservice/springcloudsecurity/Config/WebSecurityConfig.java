@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * @author bert.hu
- * @Description:
+ * @Description:安全配置,继承 WebSecurityConfigurerAdapter 实现访问资源之前的拦截配置。该拦截器的顺序在资源服务器拦截器之前
  * @date 2018/11/422:36
  **/
 @Configuration
@@ -24,6 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsService(){
         return new SecurityUserDetailsServiceImpl();
     }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -32,6 +34,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
     }
 
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web.ignoring()
+//                .antMatchers("/favor.ico");
+//    }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -39,6 +46,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
 
+    /**
+     * 功能描述: <br>
+     * 〈password 验证需要设置〉
+     *
+     * @param null
+     * @return:
+     * @since: 1.0.0
+     * @Author:huhu
+     * @Date: 2019/4/10 22:16
+     */
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
