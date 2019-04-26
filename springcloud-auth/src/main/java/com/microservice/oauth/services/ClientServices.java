@@ -1,6 +1,7 @@
 package com.microservice.oauth.services;
 
 
+import com.microservice.oauth.utils.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
@@ -21,14 +22,11 @@ import java.util.List;
 public class ClientServices implements ClientDetailsService {
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
-        List<String> grantTypes=new ArrayList<String>(){{add("password");}};
         BaseClientDetails baseClientDetails = new BaseClientDetails();
         baseClientDetails.setClientId("client");//用来标识客户的Id
         baseClientDetails.setScope(new HashSet<String>(){{add("all");}});//用来限制客户端的访问范围
-
-        baseClientDetails.setAuthorizedGrantTypes(grantTypes);//此客户端可以使用的授权类型
         //baseClientDetails.setAuthorities(); //此客户端可以使用的权限
-        baseClientDetails.setClientSecret("{bcrypt}"+ new BCryptPasswordEncoder().encode("123456"));//客户端安全码
+        baseClientDetails.setClientSecret(PasswordEncoder.encode("123456"));//客户端安全码
         return baseClientDetails;
     }
 

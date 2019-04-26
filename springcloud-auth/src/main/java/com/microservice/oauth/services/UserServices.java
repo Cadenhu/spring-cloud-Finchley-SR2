@@ -1,17 +1,14 @@
 package com.microservice.oauth.services;
 
+import com.microservice.oauth.utils.PasswordEncoder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-
 /**
  * @ClassName UserServices
  * @Description
@@ -19,16 +16,17 @@ import java.util.HashSet;
  * @Date 2019/4/25 17:30
  * @Version 1.0
  **/
+@Component
 public class UserServices  implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        String lowcaseUsername = username.toLowerCase();
-        Collection<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority("findclient"));
-        User user = new User("user", "{bcrypt}" + new BCryptPasswordEncoder().encode("12312312"), new ArrayList<GrantedAuthority>() {{
-            add(new SimpleGrantedAuthority("admin"));
-        }});
+        if (!username.equals("user1"))
+            throw new UsernameNotFoundException("用户不存在");
+        //String lowcaseUsername = username.toLowerCase();
+        OAuthUser user = new OAuthUser(1,"user1", PasswordEncoder.encode("123456") , new ArrayList<GrantedAuthority>() {{
+            add(new SimpleGrantedAuthority("USER"));
+        }},true);
         return user;
     }
 }
