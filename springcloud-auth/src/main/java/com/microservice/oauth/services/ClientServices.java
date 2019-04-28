@@ -26,7 +26,9 @@ public class ClientServices implements ClientDetailsService {
         baseClientDetails.setClientId("client");//用来标识客户的Id
         baseClientDetails.setScope(new HashSet<String>(){{add("all");}});//用来限制客户端的访问范围
         //baseClientDetails.setAuthorities(); //此客户端可以使用的权限
+        baseClientDetails.setAuthorizedGrantTypes(new ArrayList<String>(){{add("password");add("client_credentials");add("authorization_code");}});
         baseClientDetails.setClientSecret(PasswordEncoder.encode("123456"));//客户端安全码
+        baseClientDetails.setAccessTokenValiditySeconds(60);
         return baseClientDetails;
     }
 

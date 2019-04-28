@@ -1,6 +1,6 @@
 package com.microservice.oauth.utils;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;//org.springframework.security.crypto.bcrypt
 
 /**
  * @ClassName PasswordEncoder
@@ -16,7 +16,7 @@ public class PasswordEncoder {
     }
 
     public static String encode(String pwd){
-        return "{bcrypt}"+BCrypt().encode(pwd);
+        return "{bcrypt}"+BCrypt().encode(pwd).trim();
     }
 
 }

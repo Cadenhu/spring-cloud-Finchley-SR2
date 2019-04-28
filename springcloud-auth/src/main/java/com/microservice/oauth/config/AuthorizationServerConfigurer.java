@@ -5,6 +5,7 @@ import com.microservice.oauth.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -30,9 +31,11 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
     private UserServices userServices;
     //让其 支持 password grant_type
     private AuthenticationManager authenticationManager;
+
     public AuthorizationServerConfigurer(AuthenticationConfiguration configuration) throws Exception {
         this.authenticationManager =
                 configuration.getAuthenticationManager();
+
     }
 
     public ClientDetailsService clientDetailsService() {
@@ -57,10 +60,10 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security
-
                 .allowFormAuthenticationForClients()//允许对客户端进行表单身份验证
                // .tokenKeyAccess("permitAll()")
-                .checkTokenAccess("isAuthenticated()");
+                .checkTokenAccess("isAuthenticated()")
+        ;
     }
 
     /*
@@ -74,7 +77,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
 
                 .authenticationManager(this.authenticationManager)//认证管理器，当你选择了资源所有者密码（password）授权类型的时候，请设置这个属性注入一个 AuthenticationManager 对象。
                 .userDetailsService(userServices)
-        //.allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)//允许的令牌终结点请求方法
+                .allowedTokenEndpointRequestMethods(HttpMethod.POST)//允许的令牌终结点请求方法
         //.tokenStore(new InMemoryTokenStore())//内存令牌
         ;
     }
